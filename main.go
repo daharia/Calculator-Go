@@ -45,8 +45,12 @@ func main() {
 			}
 			roma = true
 		} else {
-			first_num = conv(first)
-			secon_num = conv(secon)
+			first_num, err_f := strconv.Atoi(first)
+			secon_num, err_s := strconv.Atoi(secon)
+			if err_f != nil || err_s != nil {
+				fmt.Println("Что ты вводишь?.")
+				os.Exit(1)
+			}
 			if first_num > 10 || secon_num > 10 {
 				fmt.Println("Пиши не больше 10.")
 				os.Exit(1)
@@ -145,12 +149,4 @@ func IntToRomain(number int) {
 		}
 	}
 	fmt.Printf("\n")
-}
-
-func conv(s string) int {
-	num, err := strconv.Atoi(s)
-	if err != nil {
-		os.Exit(1)
-	}
-	return num
 }
