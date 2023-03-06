@@ -12,7 +12,7 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
-		fmt.Println("Что считаем?")
+		fmt.Printf("Что считаем?: ")
 		input_raw, err := reader.ReadString('\n')
 		if err != nil {
 			fmt.Println("С такими не работаю. Прощай...")
@@ -21,7 +21,7 @@ func main() {
 
 		input_split := strings.Split(input_raw, " ")
 		if len(input_split) < 3 {
-			fmt.Println("Вводи в формате 10 + 10. C Пробелами!")
+			fmt.Println("Вводи в формате 10 + 10 или I + I. C Пробелами!")
 			os.Exit(1)
 		}
 
@@ -55,9 +55,10 @@ func main() {
 			os.Exit(1)
 		}
 
+		fmt.Printf("Получилось: ")
 		if roma {
 			if res <= 0 {
-				fmt.Println("Рома ушел в отрицание...")
+				fmt.Println("Ой! Рома не может быть отрицательным...")
 				os.Exit(1)
 			} else {
 				IntToRomain(res)
@@ -65,6 +66,7 @@ func main() {
 		} else {
 			fmt.Println(res)
 		}
+		fmt.Printf("\n")
 	}
 }
 
@@ -135,7 +137,7 @@ func IntToRomain(number int) {
 func conv(s string) int {
 	num, err := strconv.Atoi(s)
 	if err != nil || num > 10 || num <= 0 {
-		fmt.Println("Давай числа от 1 до 10)")
+		fmt.Println("Давай числа от 1 до 10.")
 		os.Exit(1)
 	}
 	return num
