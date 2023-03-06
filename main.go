@@ -20,8 +20,9 @@ func main() {
 		}
 
 		input_split := strings.Split(input_raw, " ")
-		if len(input_split) < 3 {
-			fmt.Println("Вводи в формате 10 + 10 или I + I. C Пробелами!")
+		how_m := len(input_split)
+		if how_m < 3 || how_m > 3 {
+			fmt.Println("Пиши в формате 10 + 10 или I + I. C Пробелами!")
 			os.Exit(1)
 		}
 
@@ -33,11 +34,23 @@ func main() {
 		secon_num := RomanToInt(secon)
 		roma := false
 
-		if first_num != -1 && secon_num != -1 {
+		if first_num > 0 || secon_num > 0 {
+			if first_num > 10 || secon_num > 10 {
+				fmt.Println("Пиши не больше X.")
+				os.Exit(1)
+			}
+			if first_num == -1 || secon_num == -1 {
+				fmt.Println("Пиши или арабскими или римскими одновременно.")
+				os.Exit(1)
+			}
 			roma = true
 		} else {
 			first_num = conv(first)
 			secon_num = conv(secon)
+			if first_num > 10 || secon_num > 10 {
+				fmt.Println("Пиши не больше 10.")
+				os.Exit(1)
+			}
 		}
 
 		var res int
@@ -136,8 +149,7 @@ func IntToRomain(number int) {
 
 func conv(s string) int {
 	num, err := strconv.Atoi(s)
-	if err != nil || num > 10 || num <= 0 {
-		fmt.Println("Давай числа от 1 до 10.")
+	if err != nil {
 		os.Exit(1)
 	}
 	return num
