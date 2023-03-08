@@ -45,8 +45,9 @@ func main() {
 			}
 			roma = true
 		} else {
-			first_num, err_f := strconv.Atoi(first)
-			secon_num, err_s := strconv.Atoi(secon)
+			var err_f, err_s error
+			first_num, err_f = strconv.Atoi(first)
+			secon_num, err_s = strconv.Atoi(secon)
 			if err_f != nil || err_s != nil {
 				fmt.Println("Что ты вводишь?.")
 				os.Exit(1)
