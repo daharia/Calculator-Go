@@ -40,7 +40,7 @@ func main() {
 				os.Exit(1)
 			}
 			if first_num == -1 || secon_num == -1 {
-				fmt.Println("Пиши или арабскими или римскими одновременно.")
+				fmt.Println("Определись! Пиши или арабскими или римскими.")
 				os.Exit(1)
 			}
 			roma = true
