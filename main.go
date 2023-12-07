@@ -69,7 +69,7 @@ func main() {
 		case "/":
 			res = first_num / secon_num
 		default:
-			fmt.Println("Неверно, выбирай операции на твой вкус +,-,*,/")
+			fmt.Println("Шо несешь дядя? Выбирай операции на свой вкус и аромат + - * /")
 			os.Exit(1)
 		}
 
